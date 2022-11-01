@@ -1,7 +1,6 @@
 package com.example.hellojetpackcompose
 
 import android.os.Bundle
-import android.view.Surface
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -10,6 +9,8 @@ import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,6 +40,8 @@ private fun MyApp(names: List<String> = listOf("World", "Compose")) {
 @Composable
 fun Greeting(name: String) {
 
+    val isExpanded = remember { mutableStateOf(false) }
+
     Surface(color = MaterialTheme.colors.primary) {
 
         Row(modifier = Modifier.padding(24.dp).fillMaxWidth()) {
@@ -49,9 +52,9 @@ fun Greeting(name: String) {
             }
 
             OutlinedButton(
-                onClick = { /* TODO */ }
+                onClick = { isExpanded.value = !isExpanded.value }
             ) {
-                Text("Show more")
+                Text(if (isExpanded.value) "Show less" else "Show more")
             }
         }
     }
