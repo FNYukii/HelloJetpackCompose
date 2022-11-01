@@ -48,7 +48,7 @@ fun Greeting(name: String) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 320)
 @Composable
 fun DefaultPreview() {
     HelloJetpackComposeTheme {
