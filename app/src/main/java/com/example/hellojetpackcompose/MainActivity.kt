@@ -28,9 +28,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-private fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Greeting(name = "Android")
+private fun MyApp(names: List<String> = listOf("World", "Compose")) {
+
+    Column(modifier = Modifier.padding(24.dp)) {
+        for (name in names) {
+            Greeting(name = name)
+        }
     }
 }
 
