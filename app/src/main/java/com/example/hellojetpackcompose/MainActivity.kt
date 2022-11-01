@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun MyApp(names: List<String> = listOf("World", "Compose")) {
 
-    Column(modifier = Modifier.padding(24.dp)) {
+    Column(modifier = Modifier.padding(vertical = 4.dp)) {
         for (name in names) {
             Greeting(name = name)
         }
@@ -40,8 +41,8 @@ private fun MyApp(names: List<String> = listOf("World", "Compose")) {
 @Composable
 fun Greeting(name: String) {
 
-    Surface(color = MaterialTheme.colors.primary) {
-        Column(modifier = Modifier.padding(24.dp)) {
+    Surface(color = MaterialTheme.colors.primary, modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)) {
+        Column(modifier = Modifier.padding(24.dp).fillMaxWidth()) {
             Text(text = "Hello,")
             Text(text = name)
         }
