@@ -20,7 +20,7 @@ sealed class Item(var dist: String, var icon: ImageVector) {
 }
 
 @Composable
-fun BottomNavigationBar() {
+fun BottomNavigationBar(onClick: (selection: Int) -> Unit) {
 
     val selectedItem = remember { mutableStateOf(0) }
     val items = listOf(Item.Home, Item.Search, Item.Notifications)
@@ -32,7 +32,10 @@ fun BottomNavigationBar() {
                 icon = { Icon(item.icon, contentDescription = item.dist) },
                 label = { Text(item.dist) },
                 selected = selectedItem.value == index,
-                onClick = { selectedItem.value = index }
+                onClick = {
+                    selectedItem.value = index
+                    onClick(index)
+                }
             )
         }
     }
