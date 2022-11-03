@@ -1,4 +1,4 @@
-package com.example.hellojetpackcompose
+package com.example.hellojetpackcompose.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.BottomNavigation
@@ -13,6 +13,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.hellojetpackcompose.FirstScreen
+import com.example.hellojetpackcompose.SecondScreen
+import com.example.hellojetpackcompose.ThirdScreen
 
 @Composable
 fun NavigationView() {

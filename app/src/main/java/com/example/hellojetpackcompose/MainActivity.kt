@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.hellojetpackcompose.components.NavigationView
 import com.example.hellojetpackcompose.ui.theme.HelloJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
