@@ -10,7 +10,6 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -43,16 +42,15 @@ fun  MyApp() {
 
 sealed class Item(var dist: String, var icon: ImageVector) {
     object Home : Item("Home", Icons.Filled.Home)
-    object Email : Item("Email", Icons.Filled.Email)
-    object Stars : Item("Stars", Icons.Filled.Star)
-    object Lists : Item("Lists", Icons.Filled.List)
+    object Search : Item("Search", Icons.Filled.Search)
+    object Notifications : Item("Notifications", Icons.Filled.Notifications)
 }
 
 @Composable
 fun BottomNavigationBar() {
 
     val selectedItem = remember { mutableStateOf(0) }
-    val items = listOf(Item.Home, Item.Email, Item.Stars, Item.Lists)
+    val items = listOf(Item.Home, Item.Search, Item.Notifications)
 
     BottomNavigation {
         items.forEachIndexed { index, item ->
