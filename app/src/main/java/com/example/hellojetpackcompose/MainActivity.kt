@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -29,14 +31,38 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun  MyApp() {
 
-    var isShouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
+    Column {
+        Text(text = "hello")
 
-    if (isShouldShowOnboarding) { // Where does this come from?
-        OnboardingScreen(onContinueClicked = { isShouldShowOnboarding = false })
-    } else {
-        Greetings()
+        BottomNavigationBar()
+    }
+
+
+}
+
+@Composable
+fun BottomNavigationBar() {
+    val selectedItem = remember { mutableStateOf(0) }
+    val items = listOf("Home", "Search", "Notifications")
+
+    BottomNavigation {
+        items.forEachIndexed { index, item ->
+            BottomNavigationItem(
+                icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
+                label = { Text(item) },
+                selected = selectedItem.value == index,
+                onClick = { selectedItem.value = index }
+            )
+        }
     }
 }
+
+
+
+
+
+
+
 
 @Composable
 fun OnboardingScreen(onContinueClicked: () -> Unit) {
