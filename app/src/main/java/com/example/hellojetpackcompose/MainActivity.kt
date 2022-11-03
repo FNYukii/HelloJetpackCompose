@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun  MyApp() {
 
-    var isShouldShowOnboarding by remember { mutableStateOf(true) }
+    var isShouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
     if (isShouldShowOnboarding) { // Where does this come from?
         OnboardingScreen(onContinueClicked = { isShouldShowOnboarding = false })
