@@ -31,15 +31,15 @@ fun  MyApp() {
         Column(modifier = Modifier.weight(1f)) {
 
             if (selection == 0) {
-                Text(text = "Home")
+                FirstScreen()
             }
 
             if (selection == 1) {
-                Text(text = "Search")
+                SecondScreen()
             }
 
             if (selection == 2) {
-                Text(text = "Notifications")
+                ThirdScreen()
             }
         }
 
