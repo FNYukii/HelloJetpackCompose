@@ -8,11 +8,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hellojetpackcompose.ui.theme.HelloJetpackComposeTheme
@@ -40,16 +41,25 @@ fun  MyApp() {
 
 }
 
+sealed class Item(var dist: String, var icon: ImageVector) {
+    object Home : Item("Home", Icons.Filled.Home)
+    object Email : Item("Email", Icons.Filled.Email)
+    object Stars : Item("Stars", Icons.Filled.Star)
+    object Lists : Item("Lists", Icons.Filled.List)
+}
+
 @Composable
 fun BottomNavigationBar() {
+
     val selectedItem = remember { mutableStateOf(0) }
-    val items = listOf("Home", "Search", "Notifications")
+    val items = listOf(Item.Home, Item.Email, Item.Stars, Item.Lists)
 
     BottomNavigation {
         items.forEachIndexed { index, item ->
+
             BottomNavigationItem(
-                icon = { Icon(Icons.Filled.Favorite, contentDescription = null) },
-                label = { Text(item) },
+                icon = { Icon(item.icon, contentDescription = item.dist) },
+                label = { Text(item.dist) },
                 selected = selectedItem.value == index,
                 onClick = { selectedItem.value = index }
             )
