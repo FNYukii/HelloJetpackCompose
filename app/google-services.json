@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "64047362853",
+    "project_id": "hellojetpackcompose",
+    "storage_bucket": "hellojetpackcompose.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64047362853:android:e93604ffa143dd47d8e0cc",
+        "android_client_info": {
+          "package_name": "com.example.hellojetpackcompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64047362853-0q8s23oofptr8bh8pm4ut8phfndem5c2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKcxLt4GaMl6YAtdmkVsRH6bxheGp2pEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64047362853-0q8s23oofptr8bh8pm4ut8phfndem5c2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
