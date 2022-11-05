@@ -1,4 +1,4 @@
-package com.example.hellojetpackcompose
+package com.example.hellojetpackcompose.screens
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -10,7 +10,6 @@ import androidx.compose.runtime.*
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.security.Timestamp
 
 @SuppressLint("MutableCollectionMutableState")
 @Composable
@@ -28,9 +27,6 @@ fun FirstScreen() {
 
             val newTodos = ArrayList<Todo>()
             for (doc in value!!) {
-//                doc.getString("text")?.let {
-//                    newTodos.add(it)
-//                }
 
                 val todo = FireTodos.toTodo(doc)
                 newTodos.add(todo)
@@ -43,7 +39,7 @@ fun FirstScreen() {
 
         items(items = todos) { todo ->
 
-            Text(text = "${todo.text}")
+            Text(text = todo.text)
         }
     }
 }
@@ -59,7 +55,7 @@ class FireTodos {
 
         fun toTodo(document: QueryDocumentSnapshot): Todo {
             val id: String = document.id
-            val text: String = document.data.get("text") as String
+            val text: String = document.data["text"] as String
 
             return Todo(id, text)
         }
