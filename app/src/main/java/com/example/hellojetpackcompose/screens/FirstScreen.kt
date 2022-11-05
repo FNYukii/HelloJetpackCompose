@@ -3,23 +3,20 @@ package com.example.hellojetpackcompose
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.util.Log
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.security.Timestamp
 
 @SuppressLint("MutableCollectionMutableState")
 @Composable
 fun FirstScreen() {
 
-    var todos by remember { mutableStateOf(ArrayList<String>()) }
+    var todos by remember { mutableStateOf(ArrayList<Todo>()) }
 
     val db = Firebase.firestore
     db.collection("todos")
@@ -29,11 +26,14 @@ fun FirstScreen() {
                 return@addSnapshotListener
             }
 
-            val newTodos = ArrayList<String>()
+            val newTodos = ArrayList<Todo>()
             for (doc in value!!) {
-                doc.getString("text")?.let {
-                    newTodos.add(it)
-                }
+//                doc.getString("text")?.let {
+//                    newTodos.add(it)
+//                }
+
+                val todo = FireTodos.toTodo(doc)
+                newTodos.add(todo)
             }
 
             todos = newTodos
@@ -41,11 +41,27 @@ fun FirstScreen() {
 
     LazyColumn {
 
-        items(items = todos) { name ->
+        items(items = todos) { todo ->
 
-            Text(text = name)
+            Text(text = "${todo.text}")
         }
     }
+}
 
+data class Todo(
+    val id: String,
+    val text: String
+)
 
+class FireTodos {
+
+    companion object {
+
+        fun toTodo(document: QueryDocumentSnapshot): Todo {
+            val id: String = document.id
+            val text: String = document.data.get("text") as String
+
+            return Todo(id, text)
+        }
+    }
 }
