@@ -7,7 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.example.hellojetpackcompose.entities.Todo
+import com.example.hellojetpackcompose.utilities.FireTodos
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -40,24 +41,6 @@ fun FirstScreen() {
         items(items = todos) { todo ->
 
             Text(text = todo.text)
-        }
-    }
-}
-
-data class Todo(
-    val id: String,
-    val text: String
-)
-
-class FireTodos {
-
-    companion object {
-
-        fun toTodo(document: QueryDocumentSnapshot): Todo {
-            val id: String = document.id
-            val text: String = document.data["text"] as String
-
-            return Todo(id, text)
         }
     }
 }
