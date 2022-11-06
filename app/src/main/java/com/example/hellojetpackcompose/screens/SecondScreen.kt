@@ -9,5 +9,5 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SecondScreen() {
 
-    Text(text = "Search", Modifier.padding(8.dp))
+    Text(text = "Create", Modifier.padding(8.dp))
 }
