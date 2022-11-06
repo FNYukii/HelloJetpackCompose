@@ -1,5 +1,7 @@
-package com.example.hellojetpackcompose
+package com.example.hellojetpackcompose.screens
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +11,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun SecondScreen() {
@@ -30,6 +34,7 @@ fun SecondScreen() {
 
         Button(
             onClick = {
+                createTodo(text)
                 text = ""
             },
             modifier = Modifier
@@ -39,4 +44,21 @@ fun SecondScreen() {
             Text("Create")
         }
     }
+}
+
+fun createTodo(text: String) {
+
+    val data = hashMapOf(
+        "text" to text,
+    )
+
+    val db = Firebase.firestore
+    db.collection("todos")
+        .add(data)
+        .addOnSuccessListener { documentReference ->
+            Log.d(ContentValues.TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+        }
+        .addOnFailureListener { e ->
+            Log.w(ContentValues.TAG, "Error adding document", e)
+        }
 }
