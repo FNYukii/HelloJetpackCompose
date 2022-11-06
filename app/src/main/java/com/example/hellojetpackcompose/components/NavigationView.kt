@@ -6,16 +6,14 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.hellojetpackcompose.screens.FirstScreen
 import com.example.hellojetpackcompose.SecondScreen
-import com.example.hellojetpackcompose.ThirdScreen
 
 @Composable
 fun NavigationView() {
@@ -33,10 +31,6 @@ fun NavigationView() {
             if (selection == 1) {
                 SecondScreen()
             }
-
-            if (selection == 2) {
-                ThirdScreen()
-            }
         }
 
         BottomNavigationBar(onClick = { selection = it })
@@ -47,7 +41,7 @@ fun NavigationView() {
 fun BottomNavigationBar(onClick: (selection: Int) -> Unit) {
 
     val selectedItem = remember { mutableStateOf(0) }
-    val items = listOf(Item.Home, Item.Search, Item.Notifications)
+    val items = listOf(Item.Todos, Item.Create)
 
     BottomNavigation {
         items.forEachIndexed { index, item ->
@@ -66,7 +60,6 @@ fun BottomNavigationBar(onClick: (selection: Int) -> Unit) {
 }
 
 sealed class Item(var dist: String, var icon: ImageVector) {
-    object Home : Item("Home", Icons.Filled.Home)
-    object Search : Item("Search", Icons.Filled.Search)
-    object Notifications : Item("Notifications", Icons.Filled.Notifications)
+    object Todos : Item("Todos", Icons.Filled.List)
+    object Create : Item("Create", Icons.Filled.Add)
 }
