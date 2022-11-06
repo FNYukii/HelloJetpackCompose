@@ -1,4 +1,4 @@
-package com.example.hellojetpackcompose
+package com.example.hellojetpackcompose.screens
 
 import android.content.ContentValues
 import android.util.Log
