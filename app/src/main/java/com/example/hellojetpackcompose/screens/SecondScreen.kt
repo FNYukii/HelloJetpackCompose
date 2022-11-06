@@ -29,7 +29,9 @@ fun SecondScreen() {
         )
 
         Button(
-            onClick = {},
+            onClick = {
+                text = ""
+            },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
