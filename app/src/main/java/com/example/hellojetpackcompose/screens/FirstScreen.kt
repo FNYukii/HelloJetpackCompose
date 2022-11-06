@@ -1,9 +1,12 @@
 package com.example.hellojetpackcompose.screens
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.hellojetpackcompose.viewModels.TodosViewModel
 
@@ -17,7 +20,7 @@ fun FirstScreen(
 
     LazyColumn {
         items(items = todos) { todo ->
-            Text(text = todo.text)
+            Text(text = todo.text, Modifier.padding(8.dp))
         }
     }
 }
