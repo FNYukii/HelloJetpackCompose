@@ -1,7 +1,9 @@
 package com.example.hellojetpackcompose
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -13,10 +15,26 @@ fun SecondScreen() {
 
     var text by remember { mutableStateOf("") }
 
-    OutlinedTextField(
-        value = text,
-        onValueChange = { text = it },
-        label = { Text("Todo") },
-        modifier = Modifier.padding(16.dp).fillMaxWidth()
-    )
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+
+        OutlinedTextField(
+            value = text,
+            onValueChange = { text = it },
+            label = { Text("Todo") },
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth()
+        ) {
+            Text("Create")
+        }
+    }
 }
