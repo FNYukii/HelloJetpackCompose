@@ -1,4 +1,4 @@
-package com.example.hellojetpackcompose.viewModels
+package com.example.hellojetpackcompose.ui.todo_list
 
 import android.content.ContentValues
 import android.util.Log
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class TodosViewModel @Inject constructor() : ViewModel() {
+class TodoListViewModel @Inject constructor() : ViewModel() {
 
     private val _todos = MutableStateFlow(ArrayList<Todo>())
     val todos = _todos.asStateFlow()

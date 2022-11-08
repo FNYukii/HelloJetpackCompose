@@ -10,11 +10,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.hellojetpackcompose.viewModels.TodosViewModel
+import com.example.hellojetpackcompose.ui.todo_list.TodoListViewModel
 
 @Composable
-fun SecondScreen(
-    viewModel: TodosViewModel = hiltViewModel()
+fun AddTodoScreen(
+    viewModel: TodoListViewModel = hiltViewModel()
 ) {
 
     var text by remember { mutableStateOf("") }

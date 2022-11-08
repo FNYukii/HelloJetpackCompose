@@ -12,8 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.hellojetpackcompose.screens.FirstScreen
-import com.example.hellojetpackcompose.screens.SecondScreen
+import com.example.hellojetpackcompose.ui.todo_list.TodoListScreen
+import com.example.hellojetpackcompose.screens.AddTodoScreen
 
 @Composable
 fun NavigationView() {
@@ -25,11 +25,11 @@ fun NavigationView() {
         Column(modifier = Modifier.weight(1f)) {
 
             if (selection == 0) {
-                FirstScreen()
+                TodoListScreen()
             }
 
             if (selection == 1) {
-                SecondScreen()
+                AddTodoScreen()
             }
         }
 
