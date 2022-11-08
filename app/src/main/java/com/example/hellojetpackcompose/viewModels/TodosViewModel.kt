@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.hellojetpackcompose.entities.Todo
-import com.example.hellojetpackcompose.utilities.FireTodos
+import com.example.hellojetpackcompose.utilities.toTodo
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,11 +30,28 @@ class TodosViewModel @Inject constructor() : ViewModel() {
                 val newTodos = ArrayList<Todo>()
                 for (doc in value!!) {
 
-                    val todo = FireTodos.toTodo(doc)
+                    val todo = doc.toTodo()
                     newTodos.add(todo)
                 }
 
                 _todos.value = newTodos
+            }
+    }
+
+    fun createTodo(text: String) {
+
+        val data = hashMapOf(
+            "text" to text,
+        )
+
+        val db = Firebase.firestore
+        db.collection("todos")
+            .add(data)
+            .addOnSuccessListener { documentReference ->
+                Log.d(ContentValues.TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(ContentValues.TAG, "Error adding document", e)
             }
     }
 }

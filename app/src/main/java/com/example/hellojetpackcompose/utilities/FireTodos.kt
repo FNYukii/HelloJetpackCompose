@@ -3,15 +3,9 @@ package com.example.hellojetpackcompose.utilities
 import com.example.hellojetpackcompose.entities.Todo
 import com.google.firebase.firestore.QueryDocumentSnapshot
 
-class FireTodos {
+fun QueryDocumentSnapshot.toTodo(): Todo {
+    val id: String = this.id
+    val text: String = this.data["text"] as String
 
-    companion object {
-
-        fun toTodo(document: QueryDocumentSnapshot): Todo {
-            val id: String = document.id
-            val text: String = document.data["text"] as String
-
-            return Todo(id, text)
-        }
-    }
+    return Todo(id, text)
 }
