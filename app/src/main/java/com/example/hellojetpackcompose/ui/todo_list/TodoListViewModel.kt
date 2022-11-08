@@ -37,21 +37,4 @@ class TodoListViewModel @Inject constructor() : ViewModel() {
                 _todos.value = newTodos
             }
     }
-
-    fun createTodo(text: String) {
-
-        val data = hashMapOf(
-            "text" to text,
-        )
-
-        val db = Firebase.firestore
-        db.collection("todos")
-            .add(data)
-            .addOnSuccessListener { documentReference ->
-                Log.d(ContentValues.TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w(ContentValues.TAG, "Error adding document", e)
-            }
-    }
 }

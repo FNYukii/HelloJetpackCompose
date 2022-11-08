@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun TodoListScreen(
+    modifier: Modifier = Modifier,
     todosViewModel: TodoListViewModel = hiltViewModel()
 ) {
 

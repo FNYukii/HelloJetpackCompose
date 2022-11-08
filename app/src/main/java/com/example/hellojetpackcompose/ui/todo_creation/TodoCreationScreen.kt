@@ -1,4 +1,4 @@
-package com.example.hellojetpackcompose.screens
+package com.example.hellojetpackcompose.ui.todo_creation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,11 +10,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.hellojetpackcompose.ui.todo_list.TodoListViewModel
 
 @Composable
-fun AddTodoScreen(
-    viewModel: TodoListViewModel = hiltViewModel()
+fun TodoCreationScreen(
+    viewModel: TodoCreationViewModel = hiltViewModel()
 ) {
 
     var text by remember { mutableStateOf("") }

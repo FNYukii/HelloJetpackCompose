@@ -13,7 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.hellojetpackcompose.ui.todo_list.TodoListScreen
-import com.example.hellojetpackcompose.screens.AddTodoScreen
+import com.example.hellojetpackcompose.ui.todo_creation.TodoCreationScreen
 
 @Composable
 fun NavigationView() {
@@ -29,7 +29,7 @@ fun NavigationView() {
             }
 
             if (selection == 1) {
-                AddTodoScreen()
+                TodoCreationScreen()
             }
         }
 
