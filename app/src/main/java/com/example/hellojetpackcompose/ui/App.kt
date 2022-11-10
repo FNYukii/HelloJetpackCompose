@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.hellojetpackcompose.ui.todo_creation.TodoCreationScreen
+import com.example.hellojetpackcompose.ui.todo_editor.todoEditorNavGraph
 import com.example.hellojetpackcompose.ui.todo_list.TodoListScreen
 
 @Composable
@@ -37,11 +38,16 @@ fun App() {
             startDestination = Routes.TopLevel.TodoList.route
         ) {
             composable(Routes.TopLevel.TodoList.route) {
-                TodoListScreen(modifier = Modifier.padding(paddingValues))
+                TodoListScreen(navController, Modifier.padding(paddingValues))
             }
+
             composable(Routes.TopLevel.TodoCreation.route) {
                 TodoCreationScreen()
             }
+
+            todoEditorNavGraph(onNavigateUp = {
+                navController.popBackStack()
+            })
         }
     }
 }
